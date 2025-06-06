@@ -1,4 +1,4 @@
-# School Management Dashboard
+# University Management Dashboard
 
 ## Getting Started
 
