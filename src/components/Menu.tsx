@@ -1,9 +1,6 @@
-"use client";
-
+import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
-import { role } from "@/lib/data";
 import Link from "next/link";
-import { useEffect } from "react";
 
 const menuItems = [
   {
@@ -35,18 +32,16 @@ const menuItems = [
   },
 ];
 
-const Menu = () => {
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.href = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-  }, []);
+const Menu = async () => {
+
+  const user = await currentUser()
+
+  const role = user?.publicMetadata.role as string;
 
   return (
     <div
       className="p-4 mt-2 mb-6 text-sm rounded-2xl bg-white/30 backdrop-blur-md shadow-md border border-white/10 w-full max-w-[240px] transition-all duration-300"
-      style={{ fontFamily: "'Inter', sans-serif" }}
+      style={{ fontFamily: "'Inter', sans-serif"}}
     >
       {menuItems.map((section) => (
         <div className="mb-6" key={section.title}>
@@ -70,7 +65,7 @@ const Menu = () => {
                   />
                   <span
                     style={{ fontSize: "13.5px" }}
-                    className="text-gray-600 group-hover:text-black text-sm whitespace-nowrap overflow-hidden text-ellipsis ml-0.5 mt-1"
+                    className="text-gray-600 group-hover:text-black text-sm whitespace-nowrap overflow-hidden text-ellipsis ml-0.5 mt-1 "
                   >
                     {item.label}
                   </span>

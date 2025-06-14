@@ -28,22 +28,25 @@ const SingleStudentPage = () => {
             </div>
             <div className="flex-1 flex flex-col justify-start gap-2 z-10">
               <div className="flex items-center gap-4">
-              <h1 className="text-xl font-bold text-gray-800">Cameron Moran</h1>
-              <FormModal table="student" type="update" data={{
-                id: 1,
-                username:"deanguerrero",
-                email: "deanguerrero@gmail.com",
-                password: "password",
-                firstName: "Dean",
-                lastName: "Guerrero",
-                phone: "+1 234 555 99",
-                address: "1222 Main St, Anytown, USA",
-                bloodType: "A+",
-                dateOfBirth: "2000-01-01",
-                sex: "male",
-                img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",
-              }
-              }/>
+                <h1 className="text-xl font-bold text-gray-800">Cameron Moran</h1>
+                <FormModal
+                  table="student"
+                  type="update"
+                  data={{
+                    id: 1,
+                    username: "deanguerrero",
+                    email: "deanguerrero@gmail.com",
+                    password: "password",
+                    firstName: "Dean",
+                    lastName: "Guerrero",
+                    phone: "+1 234 555 99",
+                    address: "1222 Main St, Anytown, USA",
+                    bloodType: "A+",
+                    dateOfBirth: "2000-01-01",
+                    sex: "male",
+                    img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  }}
+                />
               </div>
               <p className="text-sm text-gray-700 leading-snug">
                 Enthusiastic student passionate about learning and creativity.
@@ -105,7 +108,9 @@ const SingleStudentPage = () => {
 
         {/* CALENDAR */}
         <div className="bg-white rounded-2xl p-6 shadow-sm h-[1150px] mt-2">
-          <h2 className="text-[22px] font-semibold text-gray-800 mb-4 pl-4">Student's Schedule</h2>
+          <h2 className="text-[22px] font-semibold text-gray-800 mb-4 pl-4">
+            Student's Schedule
+          </h2>
           <BigCalendar />
         </div>
       </div>
@@ -114,36 +119,38 @@ const SingleStudentPage = () => {
       <div className="w-full xl:w-1/3 flex flex-col gap-4">
         {/* SHORTCUTS - Elegant Redesign */}
         <div className="bg-white p-6 rounded-2xl hover:shadow-md transition duration-300">
-          <h2 className="text-gray-900 font-semibold mb-4 text-xl">Shortcuts</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {[
-              { label: "My Classes", bg: "bg-blue-50" },
-              { label: "My Teachers", bg: "bg-purple-50" },
-              { label: "My Lessons", bg: "bg-yellow-50" },
-              { label: "My Exams", bg: "bg-pink-50" },
-              { label: "My Assignments", bg: "bg-green-50" },
-              { label: "My Grades", bg: "bg-gray-100" },
-            ].map((item, idx) => (
-              <Link
-                key={idx}
-                href="/"
-                className={`
-                  ${item.bg} 
-                  h-20 w-full 
-                  rounded-xl 
-                  text-sm text-gray-800 
-                  font-medium 
-                  flex items-center justify-center 
-                  text-center 
-                  hover:shadow 
-                  hover:scale-[1.02] 
-                  transition 
-                  duration-200 ease-in-out
-                `}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <h1 className="text-xl font-semibold text-gray-900 mb-4">Shortcuts</h1>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm text-gray-800">
+            <Link
+              className="h-20 w-full rounded-xl bg-lamaSkyLight flex items-center justify-center text-center font-medium hover:shadow hover:scale-[1.02] transition duration-200 ease-in-out"
+              href={`/list/lessons?classId=${2}`}
+            >
+              Student&apos;s<br />Lessons
+            </Link>
+            <Link
+              className="h-20 w-full rounded-xl bg-lamaPurpleLight flex items-center justify-center text-center font-medium hover:shadow hover:scale-[1.02] transition duration-200 ease-in-out"
+              href={`/list/teachers?classId=${2}`}
+            >
+              Student&apos;s<br />Teachers
+            </Link>
+            <Link
+              className="h-20 w-full rounded-xl bg-pink-50 flex items-center justify-center text-center font-medium hover:shadow hover:scale-[1.02] transition duration-200 ease-in-out"
+              href={`/list/exams?classId=${2}`}
+            >
+              Student&apos;s<br />Exams
+            </Link>
+            <Link
+              className="h-20 w-full rounded-xl bg-lamaSkyLight flex items-center justify-center text-center font-medium hover:shadow hover:scale-[1.02] transition duration-200 ease-in-out"
+              href={`/list/assignments?classId=${2}`}
+            >
+              Student&apos;s<br />Assignments
+            </Link>
+            <Link
+              className="h-20 w-full rounded-xl bg-lamaYellowLight flex items-center justify-center text-center font-medium hover:shadow hover:scale-[1.02] transition duration-200 ease-in-out"
+              href={`/list/results?studentId=${"student2"}`}
+            >
+              Student&apos;s<br />Results
+            </Link>
           </div>
         </div>
 

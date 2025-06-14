@@ -1,12 +1,9 @@
-"use client";
-
 import Announcements from "@/components/Announcements";
 import BigCalendar from "@/components/BigCalender";
 import FormModal from "@/components/FormModal";
 import Performance from "@/components/Performance";
 import Image from "next/image";
 import Link from "next/link";
-import { email } from "zod/v4-mini";
 
 const SingleTeacherPage = () => {
   return (
@@ -29,22 +26,25 @@ const SingleTeacherPage = () => {
             </div>
             <div className="flex-1 flex flex-col justify-start gap-2 z-10">
               <div className="flex items-center gap-4">
-              <h1 className="text-xl font-bold text-gray-800">Leonard Snyder</h1>
-              <FormModal table="teacher" type="update" data={{
-                id: 1,
-                username:"deanguerrero",
-                email: "deanguerrero@gmail.com",
-                password: "password",
-                firstName: "Dean",
-                lastName: "Guerrero",
-                phone: "+1 234 555 99",
-                address: "1222 Main St, Anytown, USA",
-                bloodType: "A+",
-                dateOfBirth: "2000-01-01",
-                sex: "male",
-                img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",
-              }
-              }/>
+                <h1 className="text-xl font-bold text-gray-800">Leonard Snyder</h1>
+                <FormModal
+                  table="teacher"
+                  type="update"
+                  data={{
+                    id: 1,
+                    username: "deanguerrero",
+                    email: "deanguerrero@gmail.com",
+                    password: "password",
+                    firstName: "Dean",
+                    lastName: "Guerrero",
+                    phone: "+1 234 555 99",
+                    address: "1222 Main St, Anytown, USA",
+                    bloodType: "A+",
+                    dateOfBirth: "2000-01-01",
+                    sex: "male",
+                    img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  }}
+                />
               </div>
               <p className="text-sm text-gray-700 leading-snug">
                 Passionate educator with over 10 years of experience in modern teaching.
@@ -113,25 +113,40 @@ const SingleTeacherPage = () => {
 
       {/* RIGHT SIDE */}
       <div className="w-full xl:w-1/3 flex flex-col gap-4">
-        {/* SHORTCUTS */}
+        {/* SHORTCUTS (updated design) */}
         <div className="bg-white p-6 rounded-2xl hover:shadow-md transition duration-300">
           <h2 className="text-gray-900 font-semibold mb-6 text-xl">Shortcuts</h2>
           <div className="flex flex-wrap gap-4 text-sm text-gray-700">
-            {[
-              { label: "Teacher's Classes", bg: "bg-lamaSkyLight", hover: "hover:bg-blue-200" },
-              { label: "Teacher's Students", bg: "bg-lamaPurpleLight", hover: "hover:bg-purple-200" },
-              { label: "Teacher's Lessons", bg: "bg-lamaYellowLight", hover: "hover:bg-yellow-200" },
-              { label: "Teacher's Exams", bg: "bg-pink-50", hover: "hover:bg-pink-100" },
-              { label: "Teacher's Assignments", bg: "bg-lamaSkyLight", hover: "hover:bg-blue-200" },
-            ].map((item, idx) => (
-              <Link
-                key={idx}
-                href="/"
-                className={`${item.bg} ${item.hover} px-5 py-3 rounded-lg shadow-sm text-gray-800 font-medium transition transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-full sm:w-auto text-center`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            <Link
+              className="bg-lamaSkyLight hover:bg-blue-200 px-5 py-3 rounded-lg shadow-sm text-gray-800 font-medium transition transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-full sm:w-auto text-center"
+              href={`/list/classes?supervisorId=${"teacher2"}`}
+            >
+              Teacher&apos;s Classes
+            </Link>
+            <Link
+              className="bg-lamaPurpleLight hover:bg-purple-200 px-5 py-3 rounded-lg shadow-sm text-gray-800 font-medium transition transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-full sm:w-auto text-center"
+              href={`/list/students?teacherId=${"teacher2"}`}
+            >
+              Teacher&apos;s Students
+            </Link>
+            <Link
+              className="bg-lamaYellowLight hover:bg-yellow-200 px-5 py-3 rounded-lg shadow-sm text-gray-800 font-medium transition transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-full sm:w-auto text-center"
+              href={`/list/lessons?teacherId=${"teacher2"}`}
+            >
+              Teacher&apos;s Lessons
+            </Link>
+            <Link
+              className="bg-pink-50 hover:bg-pink-100 px-5 py-3 rounded-lg shadow-sm text-gray-800 font-medium transition transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-full sm:w-auto text-center"
+              href={`/list/exams?teacherId=${"teacher2"}`}
+            >
+              Teacher&apos;s Exams
+            </Link>
+            <Link
+              className="bg-lamaSkyLight hover:bg-blue-200 px-5 py-3 rounded-lg shadow-sm text-gray-800 font-medium transition transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-full sm:w-auto text-center"
+              href={`/list/assignments?teacherId=${"teacher2"}`}
+            >
+              Teacher&apos;s Assignments
+            </Link>
           </div>
         </div>
 

@@ -3,13 +3,10 @@
 import { Calendar, momentLocalizer, View, Views } from "react-big-calendar";
 import moment from "moment";
 import { useState } from "react";
-import { calendarEvents } from "@/lib/data";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-// ✅ Локализатор для moment
 const localizer = momentLocalizer(moment);
 
-// ✅ Типы для кастомного тулбара
 type CustomToolbarProps = {
   label: string;
   onView: (view: View) => void;
@@ -20,7 +17,6 @@ type CustomToolbarProps = {
 const CustomToolbar = ({ label, onView, view, views }: CustomToolbarProps) => {
   return (
     <div className="rbc-toolbar flex items-center px-4 py-2 border-b border-gray-200">
-      {/* Label слева, прижат к левому краю */}
       <div
         className="rbc-toolbar-label text-xl font-semibold text-gray-800 "
         style={{ fontFamily: '"Inter", sans-serif', fontWeight: 600, flexGrow: 1, textAlign: "left"}}
@@ -28,7 +24,6 @@ const CustomToolbar = ({ label, onView, view, views }: CustomToolbarProps) => {
         {label}
       </div>
 
-      {/* Кнопки выбора вида справа */}
       <div className="rbc-btn-group flex space-x-2">
         {views.map((v) => (
           <button
@@ -46,7 +41,11 @@ const CustomToolbar = ({ label, onView, view, views }: CustomToolbarProps) => {
 };
 
 
-const BigCalendar = () => {
+const BigCalendar = ({
+  data,
+}: {
+  data: { title: string; start: Date; end: Date }[];
+}) => {
   const [view, setView] = useState<View>(Views.WORK_WEEK);
   const views: View[] = ["work_week", "day"];
 
@@ -65,7 +64,7 @@ const BigCalendar = () => {
     >
       <Calendar
         localizer={localizer}
-        events={calendarEvents}
+        events={data}
         startAccessor="start"
         endAccessor="end"
         views={views}
@@ -79,7 +78,6 @@ const BigCalendar = () => {
         style={{ height: "1060px", padding: "12px" }}
       />
 
-      {/* ✅ Стили прямо в компоненте */}
       <style jsx global>{`
         .rbc-calendar {
           background-color: white;
